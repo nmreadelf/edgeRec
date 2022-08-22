@@ -4,9 +4,10 @@ import (
 	"math"
 	"sort"
 
-	"github.com/auxten/edgeRec/nn/base"
 	"gonum.org/v1/gonum/mat"
 	"gonum.org/v1/gonum/stat"
+
+	"github.com/auxten/edgeRec/nn/base"
 )
 
 // Imputer ...

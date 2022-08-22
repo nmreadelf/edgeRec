@@ -4,9 +4,10 @@ import (
 	"math"
 	"sort"
 
-	"github.com/auxten/edgeRec/nn/base"
 	"gonum.org/v1/gonum/floats"
 	"gonum.org/v1/gonum/mat"
+
+	"github.com/auxten/edgeRec/nn/base"
 )
 
 // LabelBinarizer Binarize labels in a one-vs-all fashion

@@ -10,13 +10,14 @@ import (
 	"testing"
 	"time"
 
+	log "github.com/sirupsen/logrus"
+	. "github.com/smartystreets/goconvey/convey"
+
 	"github.com/auxten/edgeRec/feature"
 	"github.com/auxten/edgeRec/nn"
 	"github.com/auxten/edgeRec/ps"
 	"github.com/auxten/edgeRec/schema"
 	"github.com/auxten/edgeRec/utils"
-	log "github.com/sirupsen/logrus"
-	. "github.com/smartystreets/goconvey/convey"
 )
 
 const (

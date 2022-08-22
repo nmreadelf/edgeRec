@@ -1,9 +1,10 @@
 package embedding
 
 import (
+	log "github.com/sirupsen/logrus"
+
 	"github.com/auxten/edgeRec/feature/embedding/model"
 	"github.com/auxten/edgeRec/feature/embedding/model/word2vec"
-	log "github.com/sirupsen/logrus"
 )
 
 func TrainEmbedding(inputCh <-chan string, window int, dim int, iter int) (mod model.Model, err error) {

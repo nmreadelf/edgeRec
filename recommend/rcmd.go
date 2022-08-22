@@ -6,15 +6,16 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/karlseguin/ccache/v2"
+	log "github.com/sirupsen/logrus"
+	"gonum.org/v1/gonum/mat"
+
 	"github.com/auxten/edgeRec/feature/embedding"
 	"github.com/auxten/edgeRec/feature/embedding/model"
 	"github.com/auxten/edgeRec/feature/embedding/model/word2vec"
 	"github.com/auxten/edgeRec/nn/base"
 	"github.com/auxten/edgeRec/ps"
 	"github.com/auxten/edgeRec/utils"
-	"github.com/karlseguin/ccache/v2"
-	log "github.com/sirupsen/logrus"
-	"gonum.org/v1/gonum/mat"
 )
 
 const (
@@ -60,6 +61,7 @@ type UserFeaturer interface {
 }
 
 type ItemFeaturer interface {
+	GetItemsFeature(context.Context, []int) ([]Tensor, error)
 	GetItemFeature(context.Context, int) (Tensor, error)
 }
 
@@ -125,7 +127,7 @@ func Train(ctx context.Context, recSys RecSys, mlp base.Fiter) (model Predictor,
 		yClass.Set(i, 0, sample.Response[0])
 	}
 
-	//start training
+	// start training
 	log.Infof("\nstart training with %d samples\n", sampleLen)
 	mlp.Fit(sampleDense, yClass)
 	type modelImpl struct {
@@ -152,7 +154,7 @@ func Rank(ctx context.Context, recSys Predictor, userId int, itemIds []int) (ite
 		}
 	}
 	var (
-		userFeature, itemFeature Tensor
+		userFeature Tensor
 	)
 	itemScores = make([]ItemScore, len(itemIds))
 	userFeature, err = recSys.GetUserFeature(ctx, userId)
@@ -160,18 +162,23 @@ func Rank(ctx context.Context, recSys Predictor, userId int, itemIds []int) (ite
 		log.Errorf("get user feature error: %v", err)
 		return
 	}
-	for i, itemId := range itemIds {
-		itemFeature, err = recSys.GetItemFeature(ctx, itemId)
-		if err != nil {
-			log.Infof("get item feature failed: %v", err)
-			return
-		}
-		xSlice := utils.ConcatSlice(userFeature, itemFeature)
+	var items []Tensor
+	items, err = recSys.GetItemsFeature(ctx, itemIds)
+	if err != nil {
+		log.Errorf("get items fail error: %v", err)
+		return
+	}
+	if len(items) != len(itemIds) {
+		log.Errorf("some item id not found")
+		return
+	}
+	for i, item := range items {
+		xSlice := utils.ConcatSlice(userFeature, item)
 		x := mat.NewDense(1, len(xSlice), xSlice)
 		y := mat.NewDense(1, 1, nil)
 
 		score := recSys.Predict(x, y)
-		itemScores[i] = ItemScore{itemId, score.At(0, 0)}
+		itemScores[i] = ItemScore{itemIds[i], score.At(0, 0)}
 	}
 	return
 }

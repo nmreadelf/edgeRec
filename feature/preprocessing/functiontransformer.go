@@ -1,8 +1,9 @@
 package preprocessing
 
 import (
-	"github.com/auxten/edgeRec/nn/base"
 	"gonum.org/v1/gonum/mat"
+
+	"github.com/auxten/edgeRec/nn/base"
 )
 
 // FunctionTransformer Constructs a transformer from an arbitrary callable.

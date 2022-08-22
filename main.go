@@ -3,10 +3,11 @@ package main
 import (
 	"context"
 
+	log "github.com/sirupsen/logrus"
+
 	"github.com/auxten/edgeRec/example/movielens"
 	nn "github.com/auxten/edgeRec/nn/neural_network"
 	rcmd "github.com/auxten/edgeRec/recommend"
-	log "github.com/sirupsen/logrus"
 )
 
 func main() {

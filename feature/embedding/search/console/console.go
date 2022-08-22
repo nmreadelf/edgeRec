@@ -21,10 +21,11 @@ import (
 	"go/parser"
 	"go/token"
 
+	"github.com/peterh/liner"
+
 	"github.com/auxten/edgeRec/feature/embedding/emb"
 	"github.com/auxten/edgeRec/feature/embedding/emb/embutil"
 	"github.com/auxten/edgeRec/feature/embedding/search"
-	"github.com/peterh/liner"
 )
 
 type searchparams struct {

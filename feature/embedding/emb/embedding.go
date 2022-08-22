@@ -21,8 +21,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/auxten/edgeRec/feature/embedding/emb/embutil"
 	"github.com/pkg/errors"
+
+	"github.com/auxten/edgeRec/feature/embedding/emb/embutil"
 )
 
 type Embedding struct {

@@ -3,9 +3,10 @@ package metrics
 import (
 	"fmt"
 
-	"github.com/auxten/edgeRec/feature/preprocessing"
 	"gonum.org/v1/gonum/mat"
 	"gonum.org/v1/gonum/stat"
+
+	"github.com/auxten/edgeRec/feature/preprocessing"
 )
 
 // AccuracyScore reports (weighted) true values/nSamples

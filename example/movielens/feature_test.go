@@ -5,12 +5,13 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/auxten/edgeRec/nn/metrics"
-	nn "github.com/auxten/edgeRec/nn/neural_network"
-	rcmd "github.com/auxten/edgeRec/recommend"
 	log "github.com/sirupsen/logrus"
 	. "github.com/smartystreets/goconvey/convey"
 	"gonum.org/v1/gonum/mat"
+
+	"github.com/auxten/edgeRec/nn/metrics"
+	nn "github.com/auxten/edgeRec/nn/neural_network"
+	rcmd "github.com/auxten/edgeRec/recommend"
 )
 
 func TestFeatureEngineer(t *testing.T) {

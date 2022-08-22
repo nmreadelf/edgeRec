@@ -6,8 +6,9 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/auxten/edgeRec/nn"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/auxten/edgeRec/nn"
 )
 
 func Test_BoundedRegression(t *testing.T) {

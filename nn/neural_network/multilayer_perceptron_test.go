@@ -11,9 +11,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/auxten/edgeRec/feature/preprocessing"
-	"github.com/auxten/edgeRec/nn/base"
-	"github.com/auxten/edgeRec/nn/metrics"
 	"github.com/chewxy/math32"
 	"github.com/pa-m/sklearn/datasets"
 	"gonum.org/v1/gonum/blas/blas32"
@@ -25,6 +22,10 @@ import (
 	"gonum.org/v1/plot/plotter"
 	"gonum.org/v1/plot/vg"
 	"gonum.org/v1/plot/vg/draw"
+
+	"github.com/auxten/edgeRec/feature/preprocessing"
+	"github.com/auxten/edgeRec/nn/base"
+	"github.com/auxten/edgeRec/nn/metrics"
 )
 
 var _ = []base.Predicter{&MLPRegressor{}, &MLPClassifier{}}

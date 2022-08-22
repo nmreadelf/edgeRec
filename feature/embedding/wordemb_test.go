@@ -6,12 +6,13 @@ import (
 	"os"
 	"testing"
 
-	"github.com/auxten/edgeRec/feature/embedding/emb"
-	"github.com/auxten/edgeRec/feature/embedding/model/modelutil/vector"
-	"github.com/auxten/edgeRec/feature/embedding/search"
 	_ "github.com/mattn/go-sqlite3"
 	log "github.com/sirupsen/logrus"
 	. "github.com/smartystreets/goconvey/convey"
+
+	"github.com/auxten/edgeRec/feature/embedding/emb"
+	"github.com/auxten/edgeRec/feature/embedding/model/modelutil/vector"
+	"github.com/auxten/edgeRec/feature/embedding/search"
 )
 
 var (

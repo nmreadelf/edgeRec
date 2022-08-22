@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/auxten/edgeRec/nn/base"
 	"github.com/pa-m/sklearn/datasets"
+
+	"github.com/auxten/edgeRec/nn/base"
 )
 
 func ExampleBaseMultilayerPerceptron32_Fit_mnist() {

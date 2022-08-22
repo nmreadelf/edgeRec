@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/auxten/edgeRec/nn/base"
 	"gonum.org/v1/gonum/floats"
 	"gonum.org/v1/gonum/mat"
 	"gonum.org/v1/gonum/stat"
+
+	"github.com/auxten/edgeRec/nn/base"
 )
 
 // KBinsDiscretizer structure

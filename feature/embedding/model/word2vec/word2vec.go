@@ -21,8 +21,11 @@ import (
 	"math/rand"
 	"sync"
 
-	"github.com/auxten/edgeRec/feature/embedding/emb"
 	"golang.org/x/sync/semaphore"
+
+	"github.com/auxten/edgeRec/feature/embedding/emb"
+
+	log "github.com/sirupsen/logrus"
 
 	"github.com/auxten/edgeRec/feature/embedding/corpus"
 	"github.com/auxten/edgeRec/feature/embedding/corpus/fs"
@@ -34,7 +37,6 @@ import (
 	"github.com/auxten/edgeRec/feature/embedding/model/modelutil/vector"
 	"github.com/auxten/edgeRec/feature/embedding/util/clock"
 	"github.com/auxten/edgeRec/feature/embedding/util/verbose"
-	log "github.com/sirupsen/logrus"
 )
 
 type word2vec struct {

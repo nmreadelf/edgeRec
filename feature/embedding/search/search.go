@@ -18,10 +18,11 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/olekukonko/tablewriter"
+
 	"github.com/auxten/edgeRec/feature/embedding/emb"
 	"github.com/auxten/edgeRec/feature/embedding/emb/embutil"
 	"github.com/auxten/edgeRec/feature/embedding/search/searchutil"
-	"github.com/olekukonko/tablewriter"
 )
 
 // Neighbor stores the word with cosine similarity value on the target.

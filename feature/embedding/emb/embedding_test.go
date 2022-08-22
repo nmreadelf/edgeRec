@@ -20,8 +20,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/auxten/edgeRec/feature/embedding/emb/embutil"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/auxten/edgeRec/feature/embedding/emb/embutil"
 )
 
 func TestLoad(t *testing.T) {
