@@ -38,6 +38,12 @@ jobs:
       - name: Build go binary
         run: make release-build
 
+      - uses: uraimo/run-on-arch-action@v2
+        with:
+          arch: aarch64
+      - name: Build go binary for aarch64
+        run: make release-build
+
       - name: compress go binary
         if: github.ref_type == 'tag'
         shell: bash
