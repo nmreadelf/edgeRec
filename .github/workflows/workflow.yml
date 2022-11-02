@@ -1,8 +1,10 @@
 name: Release
 on:
   push:
-   tags:
-    - '*'
+    tags:
+      - '*'
+  pull_request:
+    types: [opened, reopened, synchronize]
 jobs:
   build:
     runs-on: "ubuntu-latest"
@@ -45,15 +47,17 @@ jobs:
 
       - name: Build go binary
         shell: bash
-        run: gox -osarch='darwin/arm64 darwin/amd64 windows/arm64 windows/amd64 linux/arm64 linux/amd64' -ldflags="
+        run: gox -cgo -osarch='darwin/arm64 darwin/amd64 windows/arm64 windows/amd64 linux/arm64 linux/amd64' -ldflags="
               -X main.Version=$(git describe --tags $(git rev-parse HEAD))
               -X main.Commit=$(git rev-parse HEAD)" ./
 
       - name: compress go binary
+        if: github.ref_type == 'tag'
         shell: bash
         run: for i in edgeRec_*; do zip "$(echo $i | sed 's/\..*//').zip" $i; done
 
       - name: Upload Release
+        if: github.ref_type == 'tag'
         uses: softprops/action-gh-release@v1
         with:
           files: edgeRec*.zip
